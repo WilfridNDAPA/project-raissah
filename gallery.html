@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie Andriagnambo - Sambava</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #0a0f1e 0%, #1a1f35 100%);
+            color: #f2f6ff;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Navbar Améliorée */
+        nav {
+            background: rgba(2, 49, 103, 0.85);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        nav:hover {
+            background: rgba(2, 49, 103, 0.95);
+        }
+
+        nav a {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #0ea5e9, #6366f1);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Header Hero */
+        .hero-header {
+            position: relative;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(99, 102, 241, 0.15) 100%);
+            padding: 100px 20px 60px;
+            margin-top: 80px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 50%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(242, 246, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: rgba(242, 246, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Filtres */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem 0;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            color: #f2f6ff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+
+        .filter-btn:hover {
+            background: rgba(14, 165, 233, 0.2);
+            border-color: rgba(14, 165, 233, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.2);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #0ea5e9, #0ea5e9);
+            border-color: transparent;
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.4);
+        }
+
+        /* Masonry Grid Améliorée */
+        .container {
+            width: min(1400px, 95%);
+            margin: 0 auto;
+            padding: 2rem 0 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .masonry {
+            column-count: 4;
+            column-gap: 20px;
+        }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeIn 0.6s ease both;
+        }
+
+        .masonry-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(14, 165, 233, 0.3);
+            border-color: rgba(14, 165, 233, 0.5);
+        }
+
+        .masonry-item img,
+        .masonry-item video {
+            width: 100%;
+            display: block;
+            cursor: pointer;
+            transition: transform 0.4s ease;
+        }
+
+        .masonry-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .masonry-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(99, 102, 241, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .masonry-item:hover::before {
+            opacity: 1;
+        }
+
+        /* Overlay Info */
+        .media-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .masonry-item:hover .media-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Lightbox Améliorée */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 85%;
+            border-radius: 12px;
+            box-shadow: 0 25px 100px rgba(0, 0, 0, 0.8);
+            animation: zoomIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .lightbox .close,
+        .lightbox .nav {
+            position: absolute;
+            color: #fff;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+        }
+
+        .lightbox .close:hover,
+        .lightbox .nav:hover {
+            background: rgba(14, 165, 233, 0.3);
+            border-color: rgba(14, 165, 233, 0.5);
+            transform: scale(1.1);
+        }
+
+        .lightbox .close {
+            top: 30px;
+            right: 30px;
+        }
+
+        .lightbox .prev {
+            left: 30px;
+        }
+
+        .lightbox .next {
+            right: 30px;
+        }
+
+        /* Loading Animation */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            font-size: 1.25rem;
+            color: rgba(242, 246, 255, 0.6);
+        }
+
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top: 3px solid #0ea5e9;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive */
+        @media(max-width: 1200px) {
+            .masonry {
+                column-count: 3;
+            }
+        }
+
+        @media(max-width: 768px) {
+            .masonry {
+                column-count: 2;
+                column-gap: 15px;
+            }
+
+            .hero-header {
+                padding: 80px 20px 40px;
+            }
+
+            .stats-container {
+                gap: 2rem;
+            }
+
+            .filter-container {
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        @media(max-width: 480px) {
+            .masonry {
+                column-count: 1;
+            }
+
+            .lightbox .nav,
+            .lightbox .close {
+                width: 40px;
+                height: 40px;
+                font-size: 1.25rem;
+            }
+        }
+
+        /* Footer Style */
+        footer {
+            position: relative;
+            z-index: 1;
+            background: rgba(2, 49, 103, 0.5);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                  <a href="index.html"> <img src="images/logo/logo.png" alt="Logo" class="h-16" onerror="this.style.display='none'"></a>
+                   
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition duration-300 font-medium">Accueil</a>
+                    <a href="chute.html" class="text-gray-300 hover:text-white transition duration-300 font-medium">La Chute Sacrée</a>
+                    <a href="historique.html" class="text-gray-300 hover:text-white transition duration-300 font-medium">Histoire & Culture</a>
+                    <a href="gallery.html" class="text-gray-300 hover:text-white transition duration-300 font-medium">Activités</a>
+                    <a href="contact.html" class="text-gray-300 hover:text-white transition duration-300 font-medium">Contact</a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 bg-opacity-95 border-t border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-300 hover:bg-gray-800 hover:text-white rounded-md">Accueil</a>
+                <a href="chute.html" class="block px-3 py-2 text-gray-300 hover:bg-gray-800 hover:text-white rounded-md">La Chute Sacrée</a>
+                <a href="historique.html" class="block px-3 py-2 text-gray-300 hover:bg-gray-800 hover:text-white rounded-md">Histoire & Culture</a>
+                <a href="gallery.html" class="block px-3 py-2 text-gray-300 hover:bg-gray-800 hover:text-white rounded-md">Activités</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-300 hover:bg-gray-800 hover:text-white rounded-md">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <div class="hero-header">
+        <h1 class="hero-title">Galerie Andriagnambo</h1>
+        <p class="hero-subtitle">Découvrez la beauté majestueuse de la chute sacrée d'Andriagnambo à Sambava</p>
+        
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number" id="imageCount">0</div>
+                <div class="stat-label">Photos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="videoCount">0</div>
+                <div class="stat-label">Vidéos</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filtres -->
+    <div class="filter-container">
+        <button class="filter-btn active" data-filter="all">Tout Afficher</button>
+        <button class="filter-btn" data-filter="images">Photos Uniquement</button>
+        <button class="filter-btn" data-filter="videos">Vidéos Uniquement</button>
+    </div>
+
+    <!-- Galerie -->
+    <div class="container">
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Chargement de la galerie...</p>
+        </div>
+        <div id="masonry" class="masonry" style="display: none;"></div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+        <span class="close" aria-label="Fermer">×</span>
+        <span class="nav prev" aria-label="Précédente">‹</span>
+        <img src="" alt="Image agrandie" id="lightbox-img" />
+        <span class="nav next" aria-label="Suivante">›</span>
+    </div>
+
+    <script>
+        (function () {
+            // Configuration
+            const start = 1623646;
+            const end = 1623652;
+            const imageNames = [];
+            for (let n = start; n <= end; n++) {
+                imageNames.push(`images/P${n}.JPG`);
+            }
+
+            const videoNames = [
+                'images/P1623668.mp4',
+                'images/P1623669.mp4'
+            ];
+
+            const masonry = document.getElementById('masonry');
+            const loading = document.getElementById('loading');
+            let loadedCount = 0;
+            const totalItems = imageNames.length + videoNames.length;
+
+            // Mise à jour des statistiques
+            document.getElementById('imageCount').textContent = imageNames.length;
+            document.getElementById('videoCount').textContent = videoNames.length;
+
+            // Fonction pour vérifier si tout est chargé
+            function checkLoaded() {
+                loadedCount++;
+                if (loadedCount === totalItems) {
+                    setTimeout(() => {
+                        loading.style.display = 'none';
+                        masonry.style.display = 'block';
+                    }, 300);
+                }
+            }
+
+            // Ajout des images
+            imageNames.forEach((src, i) => {
+                const item = document.createElement('div');
+                item.className = 'masonry-item';
+                item.dataset.type = 'image';
+                item.style.animationDelay = `${i * 0.05}s`;
+                
+                const img = new Image();
+                img.src = src;
+                img.alt = 'Chute d\'Andriagnambo — Sambava';
+                img.dataset.index = i;
+                img.onload = checkLoaded;
+                img.onerror = checkLoaded;
+                
+                const overlay = document.createElement('div');
+                overlay.className = 'media-overlay';
+                overlay.innerHTML = `<p class="text-sm font-medium">Photo ${i + 1}</p>`;
+                
+                item.appendChild(img);
+                item.appendChild(overlay);
+                masonry.appendChild(item);
+            });
+
+            // Ajout des vidéos
+            videoNames.forEach((src, i) => {
+                const item = document.createElement('div');
+                item.className = 'masonry-item';
+                item.dataset.type = 'video';
+                item.style.animationDelay = `${(imageNames.length + i) * 0.05}s`;
+                
+                const v = document.createElement('video');
+                v.src = src;
+                v.controls = true;
+                v.playsInline = true;
+                v.preload = 'metadata';
+                v.onloadedmetadata = checkLoaded;
+                v.onerror = checkLoaded;
+                
+                const overlay = document.createElement('div');
+                overlay.className = 'media-overlay';
+                overlay.innerHTML = `<p class="text-sm font-medium">Vidéo ${i + 1}</p>`;
+                
+                item.appendChild(v);
+                item.appendChild(overlay);
+                masonry.appendChild(item);
+            });
+
+            // Filtres
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const items = document.querySelectorAll('.masonry-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    const filter = btn.dataset.filter;
+                    items.forEach(item => {
+                        if (filter === 'all') {
+                            item.style.display = 'block';
+                        } else if (filter === 'images' && item.dataset.type === 'image') {
+                            item.style.display = 'block';
+                        } else if (filter === 'videos' && item.dataset.type === 'video') {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Lightbox
+            const lightbox = document.getElementById('lightbox');
+            const lightImg = document.getElementById('lightbox-img');
+            const closeBtn = lightbox.querySelector('.close');
+            const prevBtn = lightbox.querySelector('.prev');
+            const nextBtn = lightbox.querySelector('.next');
+            let current = 0;
+
+            function show(i) {
+                current = (i + imageNames.length) % imageNames.length;
+                lightImg.src = imageNames[current];
+                lightbox.classList.add('active');
+                lightbox.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function hide() {
+                lightbox.classList.remove('active');
+                lightbox.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+
+            masonry.addEventListener('click', e => {
+                if (e.target.tagName === 'IMG' && e.target.closest('.masonry-item').dataset.type === 'image') {
+                    show(parseInt(e.target.dataset.index, 10));
+                }
+            });
+
+            closeBtn.onclick = hide;
+            nextBtn.onclick = () => show(current + 1);
+            prevBtn.onclick = () => show(current - 1);
+
+            document.addEventListener('keydown', e => {
+                if (!lightbox.classList.contains('active')) return;
+                if (e.key === 'Escape') hide();
+                if (e.key === 'ArrowRight') show(current + 1);
+                if (e.key === 'ArrowLeft') show(current - 1);
+            });
+
+            lightbox.addEventListener('click', e => {
+                if (e.target === lightbox) hide();
+            });
+
+            // Menu mobile
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        })();
+    </script>
+
+    <!-- Footer -->
+    <footer class="text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <img src="images/logo/logo.png" alt="Logo" class="h-16 mb-4" onerror="this.style.display='none'">
+                    <p class="text-gray-400">Découvrez la beauté naturelle de Madagascar</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-lg">Liens Rapides</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#accueil" class="hover:text-white transition">Accueil</a></li>
+                        <li><a href="chute.html" class="hover:text-white transition">La Chute</a></li>
+                        <li><a href="#galerie" class="hover:text-white transition">Galerie</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-lg">Support</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">FAQ</a></li>
+                        <li><a href="#" class="hover:text-white transition">Documentation</a></li>
+                        <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-lg">Suivez-nous</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-gray-800 p-2 rounded-lg hover:bg-blue-600 transition transform hover:scale-110">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+                        </a>
+                        <a href="#" class="bg-gray-800 p-2 rounded-lg hover:bg-blue-400 transition transform hover:scale-110">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path></svg>
+                        </a>
+                        <a href="#" class="bg-gray-800 p-2 rounded-lg hover:bg-red-600 transition transform hover:scale-110">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.441 16.892c-2.102.144-6.784.144-8.883 0C5.282 16.736 5.017 15.622 5 12c.017-3.629.285-4.736 2.558-4.892 2.099-.144 6.782-.144 8.883 0C18.718 7.264 18.982 8.378 19 12c-.018 3.629-.285 4.736-2.559 4.892zM10 9.658l4.917 2.338L10 14.342V9.658z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Chute d'Andriagnambo - Sambava. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

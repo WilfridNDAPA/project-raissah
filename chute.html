@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Web Moderne</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+      /* Navbar Améliorée */
+        nav {
+            background: rgba(2, 49, 103, 0.85);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        nav:hover {
+            background: rgba(2, 49, 103, 0.95);
+        }
+
+        nav a {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #0ea5e9, #6366f1);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+</style>
+<body class="bg-gray-900">
+    <!-- Navbar -->
+      <!-- Navbar -->
+    <nav class="shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                      <a href="index.html"><img src="images/logo/logo.png" alt="Logo" class="h-20"></a>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition duration-300 font-medium">Accueil</a>
+                    <a href="chute.html" class="text-gray-300 hover:text-white transition duration-300 font-medium">La Chute Sacrée</a>
+                    <a href="historique.html" class="text-gray-300 hover:text-white transition duration-300 font-medium">Histoire & Culture</a>
+                    <a href="gallery.html" class="text-gray-300 hover:text-white transition duration-300 font-medium">Activités</a>
+                    <a href="contact.html" class="text-gray-300 hover:text-white transition duration-300 font-medium">Contact</a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 bg-opacity-95 border-t border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-300 hover:bg-gray-800 hover:text-white rounded-md">Accueil</a>
+                <a href="chute.html" class="block px-3 py-2 text-gray-300 hover:bg-gray-800 hover:text-white rounded-md">La Chute Sacrée</a>
+                <a href="historique.html" class="block px-3 py-2 text-gray-300 hover:bg-gray-800 hover:text-white rounded-md">Histoire & Culture</a>
+                <a href="gallery.html" class="block px-3 py-2 text-gray-300 hover:bg-gray-800 hover:text-white rounded-md">Activités</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-300 hover:bg-gray-800 hover:text-white rounded-md">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+  <section>
+    <div class="flex flex-wrap">
+    <div class="w-full sm:w-8/12 mb-10">
+      <div class="container mx-auto h-full sm:p-10">
+        <nav class="flex px-4 justify-between items-center">
+          <div class="text-4xl font-bold">
+            Plant<span class="text-green-700">.</span>
+          </div>
+          <div>
+            <img src="images/foret.JPG" alt="" class="w-8">
+          </div>
+        </nav>
+        <header class="container px-4 lg:flex mt-10 items-center h-full lg:mt-0">
+          <div class="w-full">
+           <h1 class="text-4xl lg:text-6xl font-bold text-white">La Chute Sacrée d'Andriagnambo</h1>
+            <div class="w-20 h-2 bg-green-700 my-4"></div>
+            <p class="text-xl mb-10 text-white">La Chute Sacrée d’Andriagnambo, située à Sambava, est l’un des sites naturels et culturels les plus emblématiques du nord-est de Madagascar. Avec ses eaux claires qui s’écoulent dans un écrin de verdure, elle offre un spectacle à la fois apaisant et impressionnant. Mais au-delà de sa beauté, cette cascade porte une valeur spirituelle et historique profondément ancrée dans la culture locale.</p>
+           <p class="text-xl mb-10 text-white">Une histoire qui traverse le temps
+
+Selon la tradition orale transmise par les anciens, la Chute Sacrée d’Andriagnambo est liée à la mémoire des anciens souverains de la région. On raconte qu’Andriagnambo, un chef respecté, venait puiser la force et la sagesse dans cette eau avant de prendre des décisions importantes pour sa communauté.
+
+Au fil des générations, la cascade est devenue un lieu de rituels et de prières, où les habitants venaient demander la bénédiction des ancêtres. Certains disent encore aujourd’hui que l’eau de la chute possède des vertus purificatrices et protectrices.</p>
+          </div>
+        </header>
+      </div>
+    </div>
+    <img src="images/foret.JPG" alt="Leafs" class="w-full h-48 object-cover sm:h-screen sm:w-4/12">
+  </div>
+  </section>
+  
+<section class="py-12 bg-gray-900 text-gray-100 sm:py-12 lg:py-16">
+   <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 py-16">
+    <!-- En-tête de section -->
+    <div class="max-w-3xl mx-auto text-center mb-16">
+        <h2 class="text-4xl font-bold leading-tight text-gray-50 sm:text-5xl xl:text-6xl mb-6 ">
+            Découvrez la Chute Sacrée
+        </h2>
+        <p class="text-lg text-gray-300 leading-relaxed">
+            Un joyau naturel et spirituel au cœur de la région SAVA. Explorez ses merveilles, respectez ses traditions.
+        </p>
+    </div>
+
+    <!-- Grille de cartes -->
+    <div class="grid max-w-7xl grid-cols-1 mx-auto gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        
+        <!-- Lieux -->
+        <div class="group relative">
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-yellow-400 via-pink-500 to-green-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
+            <div class="relative bg-white rounded-2xl shadow-xl overflow-hidden h-full hover:shadow-2xl transition duration-300">
+                <div class="p-8">
+                    <div class="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl flex items-center justify-center mb-6">
+                        <img src="images/lieux.png" alt="Lieux" class="w-12 h-12 object-contain">
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Lieux</h3>
+                    <p class="text-base text-gray-600 leading-relaxed">
+                        La Chute Sacrée d'Andriagnambo se trouve à seulement <span class="font-semibold text-gray-800">7 km de Sambava</span>, dans la région SAVA. Facilement accessible, elle constitue une escapade idéale pour découvrir la richesse naturelle et culturelle de la région.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hauteur -->
+        <div class="group relative">
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
+            <div class="relative bg-white rounded-2xl shadow-xl overflow-hidden h-full hover:shadow-2xl transition duration-300">
+                <div class="p-8">
+                    <div class="w-20 h-20 bg-gradient-to-br from-cyan-100 to-cyan-50 rounded-xl flex items-center justify-center mb-6">
+                        <img src="images/cascade.png" alt="Cascade" class="w-12 h-12 object-contain">
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Hauteur</h3>
+                    <p class="text-base text-gray-600 leading-relaxed">
+                        La cascade mesure environ <span class="font-semibold text-gray-800">20 mètres de haut</span>. Ses eaux puissantes et cristallines offrent un spectacle impressionnant, surtout lorsqu'elles se jettent au cœur d'une végétation luxuriante.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Balade & Durée -->
+        <div class="group relative">
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
+            <div class="relative bg-white rounded-2xl shadow-xl overflow-hidden h-full hover:shadow-2xl transition duration-300">
+                <div class="p-8">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-100 to-green-50 rounded-xl flex items-center justify-center mb-6">
+                        <img src="images/errer.png" alt="Balade" class="w-12 h-12 object-contain">
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Balade & Durée</h3>
+                    <p class="text-base text-gray-600 leading-relaxed">
+                        Pour visiter la chute, il faut compter environ <span class="font-semibold text-gray-800">1h à 2h</span> de marche aller-retour. Le chemin est agréable et permet de profiter d'une immersion totale dans la nature environnante.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Saison & Prudence -->
+        <div class="group relative">
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-orange-400 via-red-500 to-pink-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
+            <div class="relative bg-white rounded-2xl shadow-xl overflow-hidden h-full hover:shadow-2xl transition duration-300">
+                <div class="p-8">
+                    <div class="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-50 rounded-xl flex items-center justify-center mb-6">
+                        <img src="images/saison.png" alt="Saison" class="w-12 h-12 object-contain">
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Saison & Prudence</h3>
+                    <p class="text-base text-gray-600 leading-relaxed">
+                        La visite est particulièrement recommandée en <span class="font-semibold text-gray-800">saison sèche (avril à novembre)</span>. En période de pluie, le sentier peut devenir glissant et la cascade plus dangereuse : prudence recommandée.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Les Fady -->
+        <div class="group relative">
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-purple-400 via-violet-500 to-indigo-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
+            <div class="relative bg-white rounded-2xl shadow-xl overflow-hidden h-full hover:shadow-2xl transition duration-300">
+                <div class="p-8">
+                    <div class="w-20 h-20 bg-gradient-to-br from-purple-100 to-purple-50 rounded-xl flex items-center justify-center mb-6">
+                        <img src="images/nature.png" alt="Fady" class="w-12 h-12 object-contain">
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Les Fady (Interdits sacrés)</h3>
+                    <p class="text-base text-gray-600 leading-relaxed mb-4">
+                        La Chute Sacrée est un lieu spirituel associé aux croyances locales. Certaines pratiques sont interdites :
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start text-gray-600">
+                            <span class="text-red-500 mr-2 mt-1">•</span>
+                            <span>Se baigner sans autorisation</span>
+                        </li>
+                        <li class="flex items-start text-gray-600">
+                            <span class="text-red-500 mr-2 mt-1">•</span>
+                            <span>Manquer de respect au site ou aux cérémonies locales</span>
+                        </li>
+                         <li class="flex items-start text-gray-600">
+                            <span class="text-red-500 mr-2 mt-1">•</span>
+                            <span>Pour les femmes en période de règles, l’accès est interdit,</span>
+                        </li>
+                         <li class="flex items-start text-gray-600">
+                            <span class="text-red-500 mr-2 mt-1">•</span>
+                            <span>Les personnes ayant consommé du bouillon de porc ne peuvent pas entrer sur le site.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Faune & Animaux -->
+        <div class="group relative">
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-lime-400 via-green-500 to-emerald-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
+            <div class="relative bg-white rounded-2xl shadow-xl overflow-hidden h-full hover:shadow-2xl transition duration-300">
+                <div class="p-8">
+                    <div class="w-20 h-20 bg-gradient-to-br from-lime-100 to-lime-50 rounded-xl flex items-center justify-center mb-6">
+                        <img src="images/habitat.png" alt="Faune" class="w-12 h-12 object-contain">
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Faune & Animaux</h3>
+                    <p class="text-base text-gray-600 leading-relaxed mb-4">
+                        Les environs de la chute abritent une biodiversité riche :
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start text-gray-600">
+                            <span class="text-green-500 mr-2 mt-1"></span>
+                            <span>Des oiseaux tropicaux aux chants mélodieux</span>
+                        </li>
+                        <li class="flex items-start text-gray-600">
+                            <span class="text-green-500 mr-2 mt-1"></span>
+                            <span>Des caméléons et insectes typiques de la forêt</span>
+                        </li>
+                        <li class="flex items-start text-gray-600">
+                            <span class="text-green-500 mr-2 mt-1"></span>
+                            <span>Parfois des lémuriens, symboles de Madagascar</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer style="background-color: #023167;" class=" text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <img src="images/logo/logo.png" alt="Logo" class="h-20 mb-4">
+                    <p class="text-gray-400">Créons ensemble l'avenir du web.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-lg">Liens Rapides</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#accueil" class="hover:text-white transition">Accueil</a></li>
+                        <li><a href="#services" class="hover:text-white transition">Services</a></li>
+                        <li><a href="#portfolio" class="hover:text-white transition">Portfolio</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-lg">Support</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">FAQ</a></li>
+                        <li><a href="#" class="hover:text-white transition">Documentation</a></li>
+                        <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-lg">Suivez-nous</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-gray-800 p-2 rounded-lg hover:bg-indigo-600 transition">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="bg-gray-800 p-2 rounded-lg hover:bg-indigo-600 transition">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="bg-gray-800 p-2 rounded-lg hover:bg-indigo-600 transition">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.441 16.892c-2.102.144-6.784.144-8.883 0C5.282 16.736 5.017 15.622 5 12c.017-3.629.285-4.736 2.558-4.892 2.099-.144 6.782-.144 8.883 0C18.718 7.264 18.982 8.378 19 12c-.018 3.629-.285 4.736-2.559 4.892zM10 9.658l4.917 2.338L10 14.342V9.658z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Votre Entreprise. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle Mobile Menu
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

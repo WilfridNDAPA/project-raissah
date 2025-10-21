@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Web Moderne</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+      /* Navbar Améliorée */
+        nav {
+            background: rgba(2, 49, 103, 0.85);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        nav:hover {
+            background: rgba(2, 49, 103, 0.95);
+        }
+
+        nav a {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #0ea5e9, #6366f1);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+</style>
+<body class="bg-gray-900">
+
+
+    <!-- Navbar -->
+      <!-- Navbar -->
+    <nav class="shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                   <a href="index.html"><img src="images/logo/logo.png" alt="Logo" class="h-20"></a>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition duration-300 font-medium">Accueil</a>
+                    <a href="chute.html" class="text-gray-300 hover:text-white transition duration-300 font-medium">La Chute Sacrée</a>
+                    <a href="historique.html" class="text-gray-300 hover:text-white transition duration-300 font-medium">Histoire & Culture</a>
+                    <a href="gallery.html" class="text-gray-300 hover:text-white transition duration-300 font-medium">Activités</a>
+                    <a href="contact.html" class="text-gray-300 hover:text-white transition duration-300 font-medium">Contact</a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 bg-opacity-95 border-t border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-300 hover:bg-gray-800 hover:text-white rounded-md">Accueil</a>
+                <a href="chute.html" class="block px-3 py-2 text-gray-300 hover:bg-gray-800 hover:text-white rounded-md">La Chute Sacrée</a>
+                <a href="historique.html" class="block px-3 py-2 text-gray-300 hover:bg-gray-800 hover:text-white rounded-md">Histoire & Culture</a>
+                <a href="gallery.html" class="block px-3 py-2 text-gray-300 hover:bg-gray-800 hover:text-white rounded-md">Activités</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-300 hover:bg-gray-800 hover:text-white rounded-md">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+  <main>
+
+
+
+
+  <!-- Section Histoire et Culture -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <!-- Background decorative elements -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl float-animation"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl float-animation" style="animation-delay: -3s;"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            
+            <!-- Titre Principal -->
+            <div class="text-center mb-20 fade-in-up">
+                <h2 class="text-5xl sm:text-7xl font-bold text-white mb-6">
+                    Histoire & <span class="gradient-text">Culture</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                    Découvrez les récits ancestraux et les traditions spirituelles qui entourent la Chute Sacrée d'Andriagnambo
+                </p>
+                <div class="mt-8 w-24 h-1 mx-auto bg-gradient-to-r from-transparent via-amber-500 to-transparent"></div>
+            </div>
+
+            <!-- Section Histoire -->
+            <div class="mb-32 fade-in-up stagger-1">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <!-- Contenu Texte -->
+                    <div class="order-2 lg:order-1 space-y-6">
+                        <div class="inline-block">
+                            <span class="px-6 py-3 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full text-blue-300 text-sm font-semibold border border-blue-500/30 shimmer glow">
+                                 Histoire
+                            </span>
+                        </div>
+                        
+                        <h3 class="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
+                            Les Origines <span class="text-blue-400">Légendaires</span>
+                        </h3>
+                        
+                        <div class="space-y-6 text-gray-300 text-lg leading-relaxed">
+                            <div class="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-gray-700/50 backdrop-blur-sm card-hover">
+                                <p class="mb-4">
+                                    La chute d'eau d'Andriagnambo mesure <span class="text-blue-400 font-semibold">20 mètres de hauteur</span>, avec un débit constant qui crée un spectacle impressionnant en toute saison. La chute pourrait être décrite comme un rideau d'eau clair se jetant dans une piscine naturelle entourée de rochers.
+                                </p>
+                                <p class="mb-4">
+                                    Le site est entouré de végétation luxuriante, comprenant des arbres tropicaux, des fougères géantes et des plantes rares typiques de la région Sambava comme par exemple <span class="text-green-400">Scolopie hétérophile, Manglier gris, Mangrove, « Lingoza »</span>
+                                </p>
+                                <p class="mb-4">
+                                    Des oiseaux, comme le héron, <span class="text-amber-400">« Ledraonga »</span> Martin-pêcheur, pourraient être observés près de la chute. L'eau est cristalline et pure, ce qui peut être un symbole sacré pour les habitants, l'eau de la chute est réputée pour ses vertus purificatrices et est utilisée lors de la cérémonie locale.
+                                </p>
+                                <p>
+                                    Les roches visibles autour de la chute d'eau sacrée d'Andriagnambo sont le résultat d'une <span class="text-red-400 font-semibold">activité volcanique ancienne</span>. Après le refroidissement de la lave, ces formations ont été sculptées par le flux continu de l'eau, donnant naissance à des reliefs irréguliers, les roches sont recouvertes de mousse en raison de l'humidité persistante.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Image/Visual -->
+                    <div class="order-1 lg:order-2">
+                        <div class="relative group">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-3xl blur-2xl opacity-30 group-hover:opacity-60 transition duration-500"></div>
+                            <div class="relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 border border-gray-700 waterfall-effect overflow-hidden">
+                                <div class="text-center relative z-10">
+                                    <div class="mx-auto mb-6 rounded-3xl overflow-hidden border-4 border-blue-500/30 card-hover">
+                                        <img class="w-full h-96 object-cover" src="images/history.jpg" alt="Chute d'Andriagnambo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                        <div class="w-full h-96 bg-gradient-to-br from-blue-500/20 to-purple-500/20 hidden items-center justify-center">
+                                            <svg class="w-32 h-32 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Culture -->
+            <div class="fade-in-up stagger-2">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <!-- Image/Visual -->
+                    <div>
+                        <div class="relative group">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 rounded-3xl blur-2xl opacity-30 group-hover:opacity-60 transition duration-500"></div>
+                            <div class="relative rounded-3xl p-8 border border-gray-700 bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm">
+                                <div class="text-center">
+                                    <div class="mx-auto mb-6 rounded-3xl overflow-hidden border-4 border-amber-500/30 card-hover">
+                                        <img class="w-full h-96 object-cover" src="images/culture.jpg" alt="Culture locale" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                        <div class="w-full h-96 bg-gradient-to-br from-amber-500/20 to-red-500/20 hidden items-center justify-center">
+                                            <svg class="w-32 h-32 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contenu Texte -->
+                    <div class="space-y-6">
+                        <div class="inline-block">
+                            <span class="px-6 py-3 bg-gradient-to-r from-amber-500/20 to-red-500/20 rounded-full text-amber-300 text-sm font-semibold border border-amber-500/30 shimmer glow">
+                                 Culture
+                            </span>
+                        </div>
+                        
+                        <h3 class="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
+                            Traditions <span class="text-amber-400">Spirituelles Vivantes</span>
+                        </h3>
+                        
+                        <div class="space-y-6 text-gray-300 text-lg leading-relaxed">
+                            <div class="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-gray-700/50 backdrop-blur-sm card-hover">
+                                <p class="mb-4">
+                                    La culture et les coutumes de ce site sont profondément influencées par le concept de <span class="text-amber-400 font-bold">« Fady »</span>. Il est tout d'abord interdit de visiter cet endroit le <span class="text-red-400">mardi et jeudi</span>, car ces jours sont considérés comme des jours de malédiction pour les peuples de Madagascar.
+                                </p>
+                                <p class="mb-4">
+                                    De plus, il est formellement interdit de revenir sur ses pas en empruntant le même chemin lors du retour, car selon les croyances malgaches, après avoir sollicité une bénédiction, il est jugé irrespectueux et de mauvais augure de se détourner de l'endroit sacré.
+                                </p>
+                                <p class="mb-4">
+                                    En outre, il est interdit de manger du porc le jour de la visite de ce site car, le porc est souvent vu comme un animal impur dans certaines croyances de Madagascar, et les femmes indisposées ne sont pas autorisées à s'y rendre.
+                                </p>
+                                <p>
+                                    Lors de la visite, il est conseillé d'apporter certaines offrandes comme de l'encens, du miel, de l'argent en pièces et le plus important le <span class="text-green-400 font-semibold">« Lambahoany »</span>.
+                                </p>
+                            </div>
+                            
+                            <div class="p-6 bg-gradient-to-r from-amber-900/40 to-red-900/40 rounded-2xl border border-amber-500/30 backdrop-blur-sm card-hover glow">
+                                <h5 class="text-amber-300 font-bold text-xl mb-3 flex items-center gap-2">
+                                    <span class="text-2xl">⚠️</span> Respect des Fady (Interdits)
+                                </h5>
+                                <p class="text-gray-200">
+                                    Les visiteurs sont priés de respecter les traditions locales : éviter les comportements irrespectueux, demander l'autorisation avant de prendre des photos durant les cérémonies, et suivre les consignes des guides locaux.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  </main>
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer style="background-color: #023167;" class=" text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <img src="images/logo/logo.png" alt="Logo" class="h-20 mb-4">
+                    <p class="text-gray-400">Créons ensemble l'avenir du web.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-lg">Liens Rapides</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#accueil" class="hover:text-white transition">Accueil</a></li>
+                        <li><a href="#services" class="hover:text-white transition">Services</a></li>
+                        <li><a href="#portfolio" class="hover:text-white transition">Portfolio</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-lg">Support</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">FAQ</a></li>
+                        <li><a href="#" class="hover:text-white transition">Documentation</a></li>
+                        <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-lg">Suivez-nous</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-gray-800 p-2 rounded-lg hover:bg-indigo-600 transition">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="bg-gray-800 p-2 rounded-lg hover:bg-indigo-600 transition">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="bg-gray-800 p-2 rounded-lg hover:bg-indigo-600 transition">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.441 16.892c-2.102.144-6.784.144-8.883 0C5.282 16.736 5.017 15.622 5 12c.017-3.629.285-4.736 2.558-4.892 2.099-.144 6.782-.144 8.883 0C18.718 7.264 18.982 8.378 19 12c-.018 3.629-.285 4.736-2.559 4.892zM10 9.658l4.917 2.338L10 14.342V9.658z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Votre Entreprise. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle Mobile Menu
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
