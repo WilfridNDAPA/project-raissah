@@ -6,6 +6,84 @@
     <title>Galerie Andriagnambo - Sambava</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        
+    /* Preloader */
+    #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgb(2, 49, 103);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    #preloader.hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .preloader-content {
+        text-align: center;
+    }
+
+    .spinner {
+        width: 60px;
+        height: 60px;
+        border: 4px solid rgba(255, 255, 255, 0.1);
+        border-top: 4px solid white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 20px;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .preloader-text {
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
+
+    .waterfall-animation {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    .waterfall-animation span {
+        width: 8px;
+        height: 30px;
+        background: white;
+        border-radius: 4px;
+        animation: waterfall 1s ease-in-out infinite;
+    }
+
+    .waterfall-animation span:nth-child(1) { animation-delay: 0s; }
+    .waterfall-animation span:nth-child(2) { animation-delay: 0.1s; }
+    .waterfall-animation span:nth-child(3) { animation-delay: 0.2s; }
+    .waterfall-animation span:nth-child(4) { animation-delay: 0.3s; }
+    .waterfall-animation span:nth-child(5) { animation-delay: 0.4s; }
+
+    @keyframes waterfall {
+        0%, 100% { transform: scaleY(0.3); opacity: 0.3; }
+        50% { transform: scaleY(1); opacity: 1; }
+    }
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap');
 
         * {
@@ -36,18 +114,17 @@
             z-index: 0;
         }
 
-        /* Navbar Améliorée */
-        nav {
-            background: rgba(2, 49, 103, 0.85);
-            backdrop-filter: blur(20px) saturate(180%);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-        }
+       /* Navbar Améliorée */
+nav {
+    background: rgb(2, 49, 103);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
 
-        nav:hover {
-            background: rgba(2, 49, 103, 0.95);
-        }
+nav:hover {
+    background: rgba(2, 49, 103, 0.95);
+}
 
         nav a {
             position: relative;
@@ -418,17 +495,24 @@
             }
         }
 
-        /* Footer Style */
-        footer {
-            position: relative;
-            z-index: 1;
-            background: rgba(2, 49, 103, 0.5);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
+       
     </style>
 </head>
 <body>
+      <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="spinner"></div>
+            <div class="preloader-text">ANDRIAGNAMBO</div>
+            <div class="waterfall-animation">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
     <!-- Navbar -->
     <nav class="shadow-lg fixed w-full top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -509,18 +593,29 @@
     </div>
 
     <script>
+         // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.classList.add('hidden');
+                // Remove from DOM after transition
+                setTimeout(() => {
+                    preloader.remove();
+                }, 500);
+            }, 1000); // Adjust delay as needed (1000ms = 1 second)
+        });
         (function () {
             // Configuration
             const start = 1623646;
             const end = 1623652;
             const imageNames = [];
             for (let n = start; n <= end; n++) {
-                imageNames.push(`images/P${n}.JPG`);
+                imageNames.push(`images/P${n}.webp`);
             }
 
             const videoNames = [
-                'images/P1623668.mp4',
-                'images/P1623669.mp4'
+                'images/Andriagnambo Partie 1.mp4',
+                'images/Andriagnambo Partie 2.mp4'
             ];
 
             const masonry = document.getElementById('masonry');
@@ -667,49 +762,56 @@
         })();
     </script>
 
-    <!-- Footer -->
-    <footer class="text-white py-12">
+  <!-- Footer -->
+    <footer class=" text-white py-12" style=" background: rgb(2, 49, 103);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-4 gap-8 mb-8">
                 <div>
-                    <img src="images/logo/logo.png" alt="Logo" class="h-16 mb-4" onerror="this.style.display='none'">
-                    <p class="text-gray-400">Découvrez la beauté naturelle de Madagascar</p>
+                    <img src="images/logo/logo.png" alt="Logo" class="h-30 mb-4">
+                    <p class="text-gray-400">Créons ensemble l'avenir du web.</p>
                 </div>
                 <div>
                     <h4 class="font-bold mb-4 text-lg">Liens Rapides</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="#accueil" class="hover:text-white transition">Accueil</a></li>
-                        <li><a href="chute.html" class="hover:text-white transition">La Chute</a></li>
-                        <li><a href="#galerie" class="hover:text-white transition">Galerie</a></li>
+                        <li><a href="index.html" class="hover:text-white transition">Accueil</a></li>
+                        <li><a href="historique.html" class="hover:text-white transition">Histoire et culture</a></li>
+                        <li><a href="gallery.html" class="hover:text-white transition">Activites</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="font-bold mb-4 text-lg">Support</h4>
                     <ul class="space-y-2 text-gray-400">
                         <li><a href="#" class="hover:text-white transition">FAQ</a></li>
-                        <li><a href="#" class="hover:text-white transition">Documentation</a></li>
-                        <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+                        <li><a href="chute.html" class="hover:text-white transition">Documentation</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="font-bold mb-4 text-lg">Suivez-nous</h4>
                     <div class="flex space-x-4">
-                        <a href="#" class="bg-gray-800 p-2 rounded-lg hover:bg-blue-600 transition transform hover:scale-110">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+                        <a href="#" class="bg-gray-800 p-2 rounded-lg hover:bg-indigo-600 transition">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+                            </svg>
                         </a>
-                        <a href="#" class="bg-gray-800 p-2 rounded-lg hover:bg-blue-400 transition transform hover:scale-110">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path></svg>
+                        <a href="#" class="bg-gray-800 p-2 rounded-lg hover:bg-indigo-600 transition">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path>
+                            </svg>
                         </a>
-                        <a href="#" class="bg-gray-800 p-2 rounded-lg hover:bg-red-600 transition transform hover:scale-110">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.441 16.892c-2.102.144-6.784.144-8.883 0C5.282 16.736 5.017 15.622 5 12c.017-3.629.285-4.736 2.558-4.892 2.099-.144 6.782-.144 8.883 0C18.718 7.264 18.982 8.378 19 12c-.018 3.629-.285 4.736-2.559 4.892zM10 9.658l4.917 2.338L10 14.342V9.658z"></path></svg>
+                        <a href="#" class="bg-gray-800 p-2 rounded-lg hover:bg-indigo-600 transition">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.441 16.892c-2.102.144-6.784.144-8.883 0C5.282 16.736 5.017 15.622 5 12c.017-3.629.285-4.736 2.558-4.892 2.099-.144 6.782-.144 8.883 0C18.718 7.264 18.982 8.378 19 12c-.018 3.629-.285 4.736-2.559 4.892zM10 9.658l4.917 2.338L10 14.342V9.658z"></path>
+                            </svg>
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 Chute d'Andriagnambo - Sambava. Tous droits réservés.</p>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Andriagnambo. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
+
 </body>
 </html>

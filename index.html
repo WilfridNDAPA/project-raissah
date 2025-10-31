@@ -3,63 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site Web Moderne</title>
+    <title>Chute Sacrée d'Andriagnambo</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <style>
-      /* Navbar Améliorée */
-        nav {
-            background: rgba(2, 49, 103, 0.85);
-            backdrop-filter: blur(20px) saturate(180%);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-        }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        nav:hover {
-            background: rgba(2, 49, 103, 0.95);
-        }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    }
 
-        nav a {
-            position: relative;
-            transition: all 0.3s ease;
-        }
+    /* Preloader */
+    #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgb(2, 49, 103);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #0ea5e9, #6366f1);
-            transition: width 0.3s ease;
-        }
+    #preloader.hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
 
-        nav a:hover::after {
-            width: 100%;
-        }
+    .preloader-content {
+        text-align: center;
+    }
+
+    .spinner {
+        width: 60px;
+        height: 60px;
+        border: 4px solid rgba(255, 255, 255, 0.1);
+        border-top: 4px solid white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 20px;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .preloader-text {
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
+
+    .waterfall-animation {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    .waterfall-animation span {
+        width: 8px;
+        height: 30px;
+        background: white;
+        border-radius: 4px;
+        animation: waterfall 1s ease-in-out infinite;
+    }
+
+    .waterfall-animation span:nth-child(1) { animation-delay: 0s; }
+    .waterfall-animation span:nth-child(2) { animation-delay: 0.1s; }
+    .waterfall-animation span:nth-child(3) { animation-delay: 0.2s; }
+    .waterfall-animation span:nth-child(4) { animation-delay: 0.3s; }
+    .waterfall-animation span:nth-child(5) { animation-delay: 0.4s; }
+
+    @keyframes waterfall {
+        0%, 100% { transform: scaleY(0.3); opacity: 0.3; }
+        50% { transform: scaleY(1); opacity: 1; }
+    }
+
+    /* Navbar Simplifiée */
+    nav {
+        background: rgb(2, 49, 103);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+    }
+
+    nav a {
+        position: relative;
+        transition: color 0.3s ease;
+    }
+
+    nav a::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background: white;
+        transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+        width: 80%;
+    }
+
+    /* Hero Section */
+    .hero-overlay {
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
+    }
+
+    /* Cards avec effet simplifié */
+    .service-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Boutons améliorés */
+    .btn-primary {
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-secondary {
+        transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+        background: white;
+        color: rgb(2, 49, 103);
+    }
+
+    /* Scroll smooth */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Footer links */
+    footer a {
+        transition: color 0.3s ease;
+    }
+
+    /* Social icons */
+    .social-icon {
+        transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+        transform: scale(1.1);
+        background: rgba(255, 255, 255, 0.2);
+    }
 </style>
 <body class="bg-gray-900">
-      <!-- Navbar -->
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="spinner"></div>
+            <div class="preloader-text">ANDRIAGNAMBO</div>
+            <div class="waterfall-animation">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
     <nav class="shadow-lg fixed w-full top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center">
-                     <a href="index.html"><img src="images/logo/logo.png" alt="Logo" class="h-20"></a>
+                    <a href="index.html">
+                        <img src="images/logo/logo.png" alt="Logo" class="h-16">
+                    </a>
                 </div>
                 
                 <div class="hidden md:flex space-x-8">
-                    <a href="index.html" class="text-gray-300 hover:text-white transition duration-300 font-medium">Accueil</a>
-                    <a href="chute.html" class="text-gray-300 hover:text-white transition duration-300 font-medium">La Chute Sacrée</a>
-                    <a href="historique.html" class="text-gray-300 hover:text-white transition duration-300 font-medium">Histoire & Culture</a>
-                    <a href="gallery.html" class="text-gray-300 hover:text-white transition duration-300 font-medium">Activités</a>
-                    <a href="contact.html" class="text-gray-300 hover:text-white transition duration-300 font-medium">Contact</a>
+                    <a href="index.html" class="text-gray-200 hover:text-white font-medium py-2">Accueil</a>
+                    <a href="chute.html" class="text-gray-200 hover:text-white font-medium py-2">La Chute Sacrée</a>
+                    <a href="historique.html" class="text-gray-200 hover:text-white font-medium py-2">Histoire & Culture</a>
+                    <a href="gallery.html" class="text-gray-200 hover:text-white font-medium py-2">Activités</a>
+                    <a href="contact.html" class="text-gray-200 hover:text-white font-medium py-2">Contact</a>
                 </div>
 
                 <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none">
-                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button id="mobile-menu-button" class="text-gray-200 hover:text-white focus:outline-none">
+                        <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
                     </button>
@@ -67,137 +221,254 @@
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 bg-opacity-95 border-t border-gray-700">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="index.html" class="block px-3 py-2 text-gray-300 hover:bg-gray-800 hover:text-white rounded-md">Accueil</a>
-                <a href="chute.html" class="block px-3 py-2 text-gray-300 hover:bg-gray-800 hover:text-white rounded-md">La Chute Sacrée</a>
-                <a href="historique.html" class="block px-3 py-2 text-gray-300 hover:bg-gray-800 hover:text-white rounded-md">Histoire & Culture</a>
-                <a href="gallery.html" class="block px-3 py-2 text-gray-300 hover:bg-gray-800 hover:text-white rounded-md">Activités</a>
-                <a href="contact.html" class="block px-3 py-2 text-gray-300 hover:bg-gray-800 hover:text-white rounded-md">Contact</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900">
+            <div class="px-4 pt-2 pb-4 space-y-2">
+                <a href="index.html" class="block px-4 py-3 text-gray-200 hover:bg-gray-800 hover:text-white rounded-lg">Accueil</a>
+                <a href="chute.html" class="block px-4 py-3 text-gray-200 hover:bg-gray-800 hover:text-white rounded-lg">La Chute Sacrée</a>
+                <a href="historique.html" class="block px-4 py-3 text-gray-200 hover:bg-gray-800 hover:text-white rounded-lg">Histoire & Culture</a>
+                <a href="gallery.html" class="block px-4 py-3 text-gray-200 hover:bg-gray-800 hover:text-white rounded-lg">Activités</a>
+                <a href="contact.html" class="block px-4 py-3 text-gray-200 hover:bg-gray-800 hover:text-white rounded-lg">Contact</a>
             </div>
         </div>
     </nav>
 
-   <!-- Bannière Hero -->
-    <section id="accueil" class="pt-16 relative min-h-screen flex items-center">
-        <!-- Image de fond -->
+    <!-- Bannière Hero -->
+    <section id="accueil" class="pt-20 relative h-[70vh] flex items-center">
         <div class="absolute inset-0 z-0">
-            <img src="images/banniere.JPG" 
-                 alt="Hero Background" 
-                 class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-black/30"></div>
+            <img src="images/banniere.webp" alt="Chute Sacrée d'Andriagnambo" class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-overlay"></div>
         </div>
         
-        <!-- Contenu -->
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
-            <div class="text-center text-white">
-                <h1 class="text-5xl md:text-6xl font-bold mb-6 drop-shadow-lg">
-                   Chute sacrée d'Andriagnambo
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-24 w-full">
+            <div class="text-center text-white max-w-4xl mx-auto">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                    Chute Sacrée d'Andriagnambo
                 </h1>
-                <p class="text-xl md:text-2xl mb-8 text-gray-100 max-w-3xl mx-auto drop-shadow-md">
-                    Un lieu de nature et de spiritualité à quelques kilomètres de Sambava (SAVA). Découvrir, respecter, transmettre.
+                <p class="text-lg md:text-xl mb-10 text-gray-100 leading-relaxed">
+                    Un lieu de nature et de spiritualité à quelques kilomètres de Sambava (SAVA).<br class="hidden md:block"> 
+                    Découvrir, respecter, transmettre.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button class="bg-white text-indigo-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 shadow-lg hover:scale-105 transform">
-                        Découvrir Plus
-                    </button>
-                    <button class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition duration-300 hover:scale-105 transform">
-                        Voir Démo
-                    </button>
+                    <a href="chute.html">
+                        <button class="btn-primary bg-white text-indigo-600 px-10 py-4 rounded-lg font-semibold shadow-lg w-full sm:w-auto">
+                            Découvrir Plus
+                        </button>
+                    </a>
+                    <a href="historique.html">
+                        <button class="btn-secondary bg-transparent border-2 border-white text-white px-10 py-4 rounded-lg font-semibold w-full sm:w-auto">
+                            Notre Histoire
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Section Services -->
-    <section id="services" class="py-20 bg-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold text-center mb-12 text-white">Nos Services</h2>
+    <section id="services" class="py-24 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-white">
+                Découvrez Andriagnambo
+            </h2>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-gray-900 p-8 rounded-xl hover:shadow-2xl hover:shadow-indigo-500/20 transition duration-300 border border-gray-700">
-                    <div class="bg-indigo-600 w-16 h-16 rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                <!-- Card 1 -->
+                <div class="service-card bg-gray-900 p-8 rounded-2xl border border-gray-700">
+                    <div class="bg-indigo-600 w-14 h-14 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v12m0 0l-3-3m3 3l3-3M3 12h3m12 0h3M5 21h14M12 15v6"></path>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3 text-white">Design Créatif</h3>
-                    <p class="text-gray-400">Des designs modernes et innovants qui captivent votre audience.</p>
+                    <h3 class="text-xl font-bold mb-4 text-white">La Chute Sacrée</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Un joyau naturel au cœur d'une forêt luxuriante. Des eaux cristallines se déversent dans un bassin naturel, créant un spectacle impressionnant.
+                    </p>
                 </div>
-                <div class="bg-gray-900 p-8 rounded-xl hover:shadow-2xl hover:shadow-purple-500/20 transition duration-300 border border-gray-700">
-                    <div class="bg-purple-600 w-16 h-16 rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+
+                <!-- Card 2 -->
+                <div class="service-card bg-gray-900 p-8 rounded-2xl border border-gray-700">
+                    <div class="bg-purple-600 w-14 h-14 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3 text-white">Développement</h3>
-                    <p class="text-gray-400">Solutions techniques robustes et performantes pour votre projet.</p>
+                    <h3 class="text-xl font-bold mb-4 text-white">Histoire & Culture</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Site sacré respecté depuis des générations. La cascade possède des vertus purificatrices et le respect des traditions est essentiel.
+                    </p>
                 </div>
-                <div class="bg-gray-900 p-8 rounded-xl hover:shadow-2xl hover:shadow-pink-500/20 transition duration-300 border border-gray-700">
-                    <div class="bg-pink-600 w-16 h-16 rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+
+                <!-- Card 3 -->
+                <div class="service-card bg-gray-900 p-8 rounded-2xl border border-gray-700">
+                    <div class="bg-pink-600 w-14 h-14 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3 text-white">Performance</h3>
-                    <p class="text-gray-400">Optimisation maximale pour une expérience utilisateur fluide.</p>
+                    <h3 class="text-xl font-bold mb-4 text-white">Activités</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Randonnée, baignade, observation de la nature, photographie et méditation dans un cadre exceptionnel.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section FAQ -->
+    <section id="faq" class="py-24 bg-gray-900">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-white">
+                Questions Fréquentes
+            </h2>
+            <p class="text-center text-gray-400 mb-16">
+                Tout ce que vous devez savoir avant votre visite
+            </p>
+            
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item bg-gray-800 rounded-xl overflow-hidden border border-gray-700">
+                    <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center hover:bg-gray-750 transition">
+                        <span class="text-white font-semibold text-lg">Comment accéder à la Chute Sacrée ?</span>
+                        <svg class="faq-icon w-6 h-6 text-indigo-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-5">
+                        <p class="text-gray-400 leading-relaxed">
+                            La chute se trouve à quelques kilomètres de Sambava dans la région SAVA. Accessible par une randonnée d'environ 30 à 45 minutes à travers la forêt. Un guide local est recommandé pour votre sécurité et pour respecter les traditions.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item bg-gray-800 rounded-xl overflow-hidden border border-gray-700">
+                    <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center hover:bg-gray-750 transition">
+                        <span class="text-white font-semibold text-lg">Quels sont les 'fady' à respecter ?</span>
+                        <svg class="faq-icon w-6 h-6 text-indigo-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-5">
+                        <p class="text-gray-400 leading-relaxed">
+                            Les 'fady' sont des interdits traditionnels sacrés. Il est important de ne pas crier, de respecter le silence, de ne pas apporter certains aliments (viande de porc notamment), et de suivre les consignes du guide local. Ces règles protègent le caractère sacré du lieu.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item bg-gray-800 rounded-xl overflow-hidden border border-gray-700">
+                    <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center hover:bg-gray-750 transition">
+                        <span class="text-white font-semibold text-lg">Quelle est la meilleure période pour visiter ?</span>
+                        <svg class="faq-icon w-6 h-6 text-indigo-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-5">
+                        <p class="text-gray-400 leading-relaxed">
+                            La saison sèche, d'avril à novembre, est idéale pour visiter la chute. Les sentiers sont plus praticables et la cascade est impressionnante. Évitez la saison des pluies (décembre à mars) pour votre sécurité.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item bg-gray-800 rounded-xl overflow-hidden border border-gray-700">
+                    <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center hover:bg-gray-750 transition">
+                        <span class="text-white font-semibold text-lg">Peut-on se baigner dans le bassin ?</span>
+                        <svg class="faq-icon w-6 h-6 text-indigo-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-5">
+                        <p class="text-gray-400 leading-relaxed">
+                            Oui, la baignade est possible dans le bassin naturel, mais avec respect et après avoir consulté le guide. L'eau est réputée pour ses vertus purificatrices. Veillez à ne pas polluer l'eau et à respecter le caractère sacré du lieu.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item bg-gray-800 rounded-xl overflow-hidden border border-gray-700">
+                    <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center hover:bg-gray-750 transition">
+                        <span class="text-white font-semibold text-lg">Que faut-il apporter pour la visite ?</span>
+                        <svg class="faq-icon w-6 h-6 text-indigo-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-5">
+                        <p class="text-gray-400 leading-relaxed">
+                            Prévoyez des chaussures de randonnée, de l'eau, un maillot de bain, une serviette, de la crème solaire, un chapeau et un appareil photo. N'oubliez pas d'apporter de petits billets pour rémunérer votre guide local.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
+    <footer class="text-white py-16" style="background: rgb(2, 49, 103);">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
                 <div>
-                    <img src="https://via.placeholder.com/150x50/ffffff/4F46E5?text=LOGO" alt="Logo" class="h-10 mb-4">
-                    <p class="text-gray-400">Créons ensemble l'avenir du web.</p>
+                    <img src="images/logo/logo.png" alt="Logo Andriagnambo" class="h-24 mb-4">
+                    <p class="text-gray-300 text-sm">
+                        Découvrez la beauté naturelle et spirituelle de Madagascar.
+                    </p>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-4 text-lg">Liens Rapides</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#accueil" class="hover:text-white transition">Accueil</a></li>
-                        <li><a href="#services" class="hover:text-white transition">Services</a></li>
-                        <li><a href="#portfolio" class="hover:text-white transition">Portfolio</a></li>
+                    <h4 class="font-bold mb-4 text-white">Liens Rapides</h4>
+                    <ul class="space-y-3 text-gray-300 text-sm">
+                        <li><a href="index.html" class="hover:text-white">Accueil</a></li>
+                        <li><a href="historique.html" class="hover:text-white">Histoire et culture</a></li>
+                        <li><a href="gallery.html" class="hover:text-white">Activités</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-4 text-lg">Support</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition">FAQ</a></li>
-                        <li><a href="#" class="hover:text-white transition">Documentation</a></li>
-                        <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+                    <h4 class="font-bold mb-4 text-white">Support</h4>
+                    <ul class="space-y-3 text-gray-300 text-sm">
+                        <li><a href="#" class="hover:text-white">FAQ</a></li>
+                        <li><a href="chute.html" class="hover:text-white">Documentation</a></li>
+                        <li><a href="contact.html" class="hover:text-white">Contact</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-4 text-lg">Suivez-nous</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="bg-gray-800 p-2 rounded-lg hover:bg-indigo-600 transition">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <h4 class="font-bold mb-4 text-white">Suivez-nous</h4>
+                    <div class="flex space-x-3">
+                        <a href="#" class="social-icon bg-white bg-opacity-10 p-3 rounded-lg">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
                             </svg>
                         </a>
-                        <a href="#" class="bg-gray-800 p-2 rounded-lg hover:bg-indigo-600 transition">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <a href="#" class="social-icon bg-white bg-opacity-10 p-3 rounded-lg">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path>
                             </svg>
                         </a>
-                        <a href="#" class="bg-gray-800 p-2 rounded-lg hover:bg-indigo-600 transition">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <a href="#" class="social-icon bg-white bg-opacity-10 p-3 rounded-lg">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.441 16.892c-2.102.144-6.784.144-8.883 0C5.282 16.736 5.017 15.622 5 12c.017-3.629.285-4.736 2.558-4.892 2.099-.144 6.782-.144 8.883 0C18.718 7.264 18.982 8.378 19 12c-.018 3.629-.285 4.736-2.559 4.892zM10 9.658l4.917 2.338L10 14.342V9.658z"></path>
                             </svg>
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 Votre Entreprise. Tous droits réservés.</p>
+            <div class="border-t border-white border-opacity-20 pt-8 text-center">
+                <p class="text-gray-300 text-sm">&copy; 2025 Andriagnambo. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Toggle Mobile Menu
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.classList.add('hidden');
+                // Remove from DOM after transition
+                setTimeout(() => {
+                    preloader.remove();
+                }, 500);
+            }, 1000); // Adjust delay as needed (1000ms = 1 second)
+        });
+
+        // Mobile Menu Toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -214,6 +485,27 @@
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     mobileMenu.classList.add('hidden');
                 }
+            });
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const answer = faqItem.querySelector('.faq-answer');
+                const icon = button.querySelector('.faq-icon');
+                
+                // Toggle current item
+                answer.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+                
+                // Optional: Close other items (uncomment if you want only one open at a time)
+                // document.querySelectorAll('.faq-item').forEach(item => {
+                //     if (item !== faqItem) {
+                //         item.querySelector('.faq-answer').classList.add('hidden');
+                //         item.querySelector('.faq-icon').classList.remove('rotate-180');
+                //     }
+                // });
             });
         });
     </script>

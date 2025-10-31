@@ -7,18 +7,96 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <style>
-      /* Navbar Améliorée */
-        nav {
-            background: rgba(2, 49, 103, 0.85);
-            backdrop-filter: blur(20px) saturate(180%);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-        }
+   
+    /* Preloader */
+    #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgb(2, 49, 103);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
 
-        nav:hover {
-            background: rgba(2, 49, 103, 0.95);
-        }
+    #preloader.hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .preloader-content {
+        text-align: center;
+    }
+
+    .spinner {
+        width: 60px;
+        height: 60px;
+        border: 4px solid rgba(255, 255, 255, 0.1);
+        border-top: 4px solid white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 20px;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .preloader-text {
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
+
+    .waterfall-animation {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    .waterfall-animation span {
+        width: 8px;
+        height: 30px;
+        background: white;
+        border-radius: 4px;
+        animation: waterfall 1s ease-in-out infinite;
+    }
+
+    .waterfall-animation span:nth-child(1) { animation-delay: 0s; }
+    .waterfall-animation span:nth-child(2) { animation-delay: 0.1s; }
+    .waterfall-animation span:nth-child(3) { animation-delay: 0.2s; }
+    .waterfall-animation span:nth-child(4) { animation-delay: 0.3s; }
+    .waterfall-animation span:nth-child(5) { animation-delay: 0.4s; }
+
+    @keyframes waterfall {
+        0%, 100% { transform: scaleY(0.3); opacity: 0.3; }
+        50% { transform: scaleY(1); opacity: 1; }
+    }
+     /* Navbar Améliorée */
+nav {
+    background: rgb(2, 49, 103);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+nav:hover {
+    background: rgba(2, 49, 103, 0.95);
+}
+     
 
         nav a {
             position: relative;
@@ -41,6 +119,20 @@
         }
 </style>
 <body class="bg-gray-900">
+     <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="spinner"></div>
+            <div class="preloader-text">ANDRIAGNAMBO</div>
+            <div class="waterfall-animation">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
     <!-- Navbar -->
       <!-- Navbar -->
     <nav class="shadow-lg fixed w-full top-0 z-50">
@@ -83,14 +175,7 @@
     <div class="flex flex-wrap">
     <div class="w-full sm:w-8/12 mb-10">
       <div class="container mx-auto h-full sm:p-10">
-        <nav class="flex px-4 justify-between items-center">
-          <div class="text-4xl font-bold">
-            Plant<span class="text-green-700">.</span>
-          </div>
-          <div>
-            <img src="images/foret.JPG" alt="" class="w-8">
-          </div>
-        </nav>
+       
         <header class="container px-4 lg:flex mt-10 items-center h-full lg:mt-0">
           <div class="w-full">
            <h1 class="text-4xl lg:text-6xl font-bold text-white">La Chute Sacrée d'Andriagnambo</h1>
@@ -265,27 +350,27 @@ Au fil des générations, la cascade est devenue un lieu de rituels et de prièr
 
 
     <!-- Footer -->
-    <footer style="background-color: #023167;" class=" text-white py-12">
+    <footer class=" text-white py-12" style=" background: rgb(2, 49, 103);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-4 gap-8 mb-8">
                 <div>
-                    <img src="images/logo/logo.png" alt="Logo" class="h-20 mb-4">
+                    <img src="images/logo/logo.png" alt="Logo" class="h-30 mb-4">
                     <p class="text-gray-400">Créons ensemble l'avenir du web.</p>
                 </div>
                 <div>
                     <h4 class="font-bold mb-4 text-lg">Liens Rapides</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="#accueil" class="hover:text-white transition">Accueil</a></li>
-                        <li><a href="#services" class="hover:text-white transition">Services</a></li>
-                        <li><a href="#portfolio" class="hover:text-white transition">Portfolio</a></li>
+                        <li><a href="index.html" class="hover:text-white transition">Accueil</a></li>
+                        <li><a href="historique.html" class="hover:text-white transition">Histoire et culture</a></li>
+                        <li><a href="gallery.html" class="hover:text-white transition">Activites</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="font-bold mb-4 text-lg">Support</h4>
                     <ul class="space-y-2 text-gray-400">
                         <li><a href="#" class="hover:text-white transition">FAQ</a></li>
-                        <li><a href="#" class="hover:text-white transition">Documentation</a></li>
-                        <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+                        <li><a href="chute.html" class="hover:text-white transition">Documentation</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
                     </ul>
                 </div>
                 <div>
@@ -310,12 +395,24 @@ Au fil des générations, la cascade est devenue un lieu de rituels et de prièr
                 </div>
             </div>
             <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 Votre Entreprise. Tous droits réservés.</p>
+                <p>&copy; 2025 Andriagnambo. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
 
+
     <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.classList.add('hidden');
+                // Remove from DOM after transition
+                setTimeout(() => {
+                    preloader.remove();
+                }, 500);
+            }, 1000); // Adjust delay as needed (1000ms = 1 second)
+        });
         // Toggle Mobile Menu
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
